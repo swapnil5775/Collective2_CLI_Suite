@@ -5,6 +5,7 @@
 config.ini
 config.py
 scripts/config.py
+scripts/config_strategy*.py
 *.key
 *_key.txt
 api_key.txt

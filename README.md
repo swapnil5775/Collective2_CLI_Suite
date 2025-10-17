@@ -39,21 +39,52 @@ pip3 install requests yfinance
 
 **⚠️ IMPORTANT: Never commit your actual API key to version control!**
 
+#### Step-by-Step Configuration:
+
+**a) Copy the example config file:**
 ```bash
-# Copy the example config file
 cp scripts/config_example.py scripts/config.py
-
-# Edit with your credentials
-nano scripts/config.py  # or use your favorite editor
 ```
 
-Add your Collective2 credentials:
+**b) Get your Collective2 API Key:**
+1. Log in to [Collective2](https://collective2.com)
+2. Go to [API Documentation](https://api-docs.collective2.com/)
+3. Click "Get API Key" or find it in your account settings
+4. Copy your API key (format: `XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX`)
+
+**c) Find your Strategy ID:**
+1. Go to your strategy page on Collective2
+2. Look at the URL: `https://collective2.com/strategy/123456789`
+3. The number at the end is your Strategy ID (e.g., `123456789`)
+
+**d) Edit the config file:**
+```bash
+nano scripts/config.py
+# OR
+open -e scripts/config.py  # macOS TextEdit
+# OR use any text editor you prefer
+```
+
+**e) Replace the placeholder values:**
 ```python
-API_KEY = "YOUR_ACTUAL_API_KEY"
-STRATEGY_ID = 123456789  # Your strategy ID
+# Before (example):
+API_KEY = "YOUR_API_KEY_HERE"
+STRATEGY_ID = 0
+
+# After (with your actual values):
+API_KEY = "A1B2C3D4-E5F6-G7H8-I9J0-K1L2M3N4O5P6"
+STRATEGY_ID = 153075915
+PERSON_ID = 153075914  # Optional, usually Strategy ID - 1
 ```
 
-Get your API key from: https://collective2.com/api-docs/latest
+**f) Save the file** (Ctrl+O in nano, Cmd+S in TextEdit)
+
+**g) Verify the file is protected:**
+```bash
+# This should show that config.py is gitignored
+git status
+# config.py should NOT appear in the list
+```
 
 ### 4. Run the Suite
 
@@ -82,9 +113,87 @@ python3 scripts/c2_trading.py
 
 ---
 
+## 🎯 Managing Multiple Strategies
+
+If you manage multiple Collective2 strategies, you have two options:
+
+### Option 1: Interactive Strategy Selection (Coming Soon)
+
+The suite will prompt you to select which strategy to use when you start it.
+
+### Option 2: Multiple Config Files (Current)
+
+Create separate config files for each strategy:
+
+```bash
+# Create config files for each strategy
+cp scripts/config_example.py scripts/config_strategy1.py
+cp scripts/config_example.py scripts/config_strategy2.py
+cp scripts/config_example.py scripts/config_strategy3.py
+
+# Edit each with different strategy IDs
+nano scripts/config_strategy1.py  # Strategy 1 credentials
+nano scripts/config_strategy2.py  # Strategy 2 credentials
+nano scripts/config_strategy3.py  # Strategy 3 credentials
+```
+
+**Example config_strategy1.py:**
+```python
+API_KEY = "YOUR_API_KEY"  # Same API key for all
+STRATEGY_ID = 111111111    # Strategy 1 ID
+PERSON_ID = 111111110
+```
+
+**Example config_strategy2.py:**
+```python
+API_KEY = "YOUR_API_KEY"  # Same API key for all
+STRATEGY_ID = 222222222    # Strategy 2 ID
+PERSON_ID = 222222221
+```
+
+**To use a specific strategy:**
+
+```bash
+# Temporarily rename the config you want to use
+cp scripts/config_strategy1.py scripts/config.py
+python3 scripts/c2_trading.py
+
+# When done, switch to another strategy
+cp scripts/config_strategy2.py scripts/config.py
+python3 scripts/c2_trading.py
+```
+
+**Pro Tip:** Create shell aliases for quick switching:
+
+```bash
+# Add to your ~/.zshrc or ~/.bashrc
+alias c2-strategy1='cd ~/Collective2_CLI_Suite && cp scripts/config_strategy1.py scripts/config.py && python3 scripts/c2_trading.py'
+alias c2-strategy2='cd ~/Collective2_CLI_Suite && cp scripts/config_strategy2.py scripts/config.py && python3 scripts/c2_trading.py'
+alias c2-strategy3='cd ~/Collective2_CLI_Suite && cp scripts/config_strategy3.py scripts/config.py && python3 scripts/c2_trading.py'
+
+# Then just type:
+c2-strategy1  # Opens suite with Strategy 1
+c2-strategy2  # Opens suite with Strategy 2
+```
+
+### Option 3: Command Line Override
+
+Pass strategy ID directly:
+
+```bash
+# View positions for specific strategy
+python3 scripts/c2_open_positions.py --mode strategy --strategy-id 111111111
+
+# Submit trade to specific strategy
+python3 scripts/c2_submit_signal.py --strategy-id 222222222 --symbol AAPL --action buy --quantity 10 --limit 150.00
+```
+
+---
+
 ## 📖 Documentation
 
 - **[Getting Started Guide](scripts/GETTING_STARTED.md)** - Quick 2-minute tutorial
+- **[Multi-Strategy Guide](scripts/MULTI_STRATEGY.md)** - Managing multiple strategies
 - **[Full Documentation](scripts/README.md)** - Complete feature reference
 - **[API Documentation](https://api-docs.collective2.com/)** - Collective2 API reference
 
