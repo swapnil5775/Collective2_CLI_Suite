@@ -192,10 +192,12 @@ python3 scripts/c2_submit_signal.py --strategy-id 222222222 --symbol AAPL --acti
 
 ## 📖 Documentation
 
-- **[Getting Started Guide](scripts/GETTING_STARTED.md)** - Quick 2-minute tutorial
-- **[Multi-Strategy Guide](scripts/MULTI_STRATEGY.md)** - Managing multiple strategies
-- **[Full Documentation](scripts/README.md)** - Complete feature reference
-- **[API Documentation](https://api-docs.collective2.com/)** - Collective2 API reference
+- **[📁 Repository Structure](STRUCTURE.md)** - File and folder organization
+- **[⚡ Quick Start](QUICKSTART.md)** - Get started in 5 minutes
+- **[📚 Getting Started Guide](docs/GETTING_STARTED.md)** - Detailed walkthrough
+- **[🎯 Multi-Strategy Guide](docs/MULTI_STRATEGY.md)** - Managing multiple strategies
+- **[📋 Features & Commands](docs/FEATURES.md)** - Complete feature reference
+- **[🔗 API Documentation](https://api-docs.collective2.com/)** - Collective2 API reference
 
 ---
 

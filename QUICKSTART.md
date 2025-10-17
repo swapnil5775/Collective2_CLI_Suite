@@ -81,8 +81,9 @@ c2-strategy2  # Opens Strategy 2
 ## 📚 More Help
 
 - **Detailed Setup**: See [README.md](README.md)
-- **Multi-Strategy**: See [MULTI_STRATEGY.md](scripts/MULTI_STRATEGY.md)
-- **Getting Started**: See [GETTING_STARTED.md](scripts/GETTING_STARTED.md)
+- **Multi-Strategy**: See [docs/MULTI_STRATEGY.md](docs/MULTI_STRATEGY.md)
+- **Getting Started**: See [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md)
+- **All Features**: See [docs/FEATURES.md](docs/FEATURES.md)
 
 ## ⚠️ Security
 

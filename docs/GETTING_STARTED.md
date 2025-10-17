@@ -167,8 +167,10 @@ Press `Ctrl+C` at any time to safely exit.
 
 ## 📚 Learn More
 
-- **Full Documentation**: `cat scripts/README.md`
-- **Strategy Page**: https://collective2.com/strategy/153075915
+- **Quick Start**: [QUICKSTART.md](../QUICKSTART.md)
+- **Multi-Strategy**: [MULTI_STRATEGY.md](MULTI_STRATEGY.md)
+- **Full Features**: [FEATURES.md](FEATURES.md)
+- **Main README**: [README.md](../README.md)
 - **API Docs**: https://api-docs.collective2.com/
 
 ---
