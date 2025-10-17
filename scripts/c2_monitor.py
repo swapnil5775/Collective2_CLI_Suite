@@ -31,7 +31,7 @@ def main():
             # Run the main script
             result = run([
                 'python3', 
-                '/Users/swapnil5775/scripts/c2_open_positions.py',
+                '/Users/swapnil5775/Collective2_CLI_Suite/scripts/c2_open_positions.py',
                 '--mode', 'strategy',
                 '--strategy-id', str(strategy_id)
             ], capture_output=True, text=True)
